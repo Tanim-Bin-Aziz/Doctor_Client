@@ -5,10 +5,12 @@ const AppointmentOption = ({ appointmentOption }) => {
     return (
         <div className="card shadow-xl">
             <div className="card-body text-center">
-                <h2 className="card-title text-primary">{name}</h2>
+                <h2 className="text-center text-2xl font-bold text-secondary">{name}</h2>
                 <p>{slots.length > 0 ? slots[0] : 'Try again another day'}</p>
-                <div className="card-actions justify-end">
-                    <button className="btn btn-primary">Book Appointment</button>
+                <p>{slots.length} {slots.length > 1 ? 'Spaces' : 'Space'} available</p>
+                <div className="card-actions justify-center">
+                    <button className="btn btn-primary text-white">Book Appointment</button>
+                    <label htmlFor="booking-modal" className="btn">open modal</label>
                 </div>
             </div>
         </div>
