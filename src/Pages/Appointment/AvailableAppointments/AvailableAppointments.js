@@ -7,14 +7,13 @@ import BookingsModal from '../BookingsModal/BookingsModal';
 
 const AvailableAppointments = ({ selctedDate }) => {
     const [appointmentOptions, setAppointmentOptions] = useState([])
+    const [treatment, setTreatment] = useState(null);
 
     useEffect(() => {
         fetch('appointmentOptions.json')
             .then(res => res.json())
             .then(data => setAppointmentOptions(data))
     }, [])
-
-
 
     return (
         <section className='my-16'>
@@ -25,11 +24,17 @@ const AvailableAppointments = ({ selctedDate }) => {
                     appointmentOptions.map(option => <AppointmentOption
                         key={option._id}
                         appointmentOption={option}
-
+                        setTreatment={setTreatment}
                     ></AppointmentOption>)
                 }
             </div>
-            <BookingsModal></BookingsModal>
+            {
+                treatment &&
+                <BookingsModal
+                    treatment={treatment}
+                >
+                </BookingsModal>
+            }
         </section>
     );
 };
